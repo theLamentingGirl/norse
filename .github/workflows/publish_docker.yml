@@ -27,7 +27,7 @@ jobs:
           context: .
           file: publish/Dockerfile
           push: true
-          tags: quay.io/norse/norse:${{ GITHUB_REF }},quay.io/norse/norse:latest
+          tags: quay.io/norse/norse:${{ env.GITHUB_REF }},quay.io/norse/norse:latest
 
       - name: Image digest
         run: echo ${{ steps.docker_build_vanilla.outputs.digest }}
@@ -39,7 +39,7 @@ jobs:
           context: .
           file: publish/Dockerfile.conda
           push: true
-          tags: quay.io/norse/norse:${{ GITHUB_REF }}-conda,quay.io/norse/norse:latest-conda
+          tags: quay.io/norse/norse:${{ env.GITHUB_REF }}-conda,quay.io/norse/norse:latest-conda
 
       - name: Image digest
         run: echo ${{ steps.docker_build_conda.outputs.digest }}
